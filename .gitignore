@@ -1,0 +1,30 @@
+# --- Entornos virtuales ---
+.venv/
+venv/
+env/
+
+# --- Python: bytecode y cachés ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.uv-cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Temporales / scratchpad ---
+scratchpad/
+tmp/
+temp/
+*.tmp
+
+# --- Archivos de bloqueo de Office (abiertos en Word/PowerPoint) ---
+~$*
+
+# --- Sistema operativo ---
+Thumbs.db
+desktop.ini
+.DS_Store
