@@ -28,3 +28,9 @@ temp/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# --- Datos crudos (descargar desde PEER, ver data/README.md) ---
+data/*.xlsx
+
+# --- Carpeta local de entregables (copia, no se sube) ---
+ENTREGABLES/

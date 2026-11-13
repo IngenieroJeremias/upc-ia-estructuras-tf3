@@ -6,3 +6,4 @@ seaborn>=0.13
 scipy>=1.11
 ipykernel>=6.29
 pillow>=10.0
+openpyxl>=3.1
