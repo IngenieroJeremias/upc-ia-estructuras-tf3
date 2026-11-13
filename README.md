@@ -7,7 +7,7 @@
 - Franklin Fustamante Sánchez (e201568658)
 - Carlos David Vargas Marin (e202527282)
 - Abrahán Ramirez More (e202527900)
-- Jheremy Richard Molleapaza Infantes
+- Jheremy Richard Molleapaza Infantes (e202528006)
 
 ---
 
@@ -20,8 +20,8 @@ Se comparan tres modelos:
 | Modelo | Rol | Hiperparámetros |
 |:---|:---|:---|
 | Ridge con forma funcional de GMM | Línea base física | `alpha = 1.0`; términos Mw, Mw², ln√(Rrup² + h²) con h = 6 km, ln Vs30 |
-| Random Forest | Modelo final | `n_estimators = 100`, `max_depth = 8`, `random_state = 42` |
-| Red neuronal MLP | Comparativa | capas `(64, 32)`, ReLU, `early_stopping = True`, `max_iter = 500` |
+| Random Forest | Contraste y base de la auditoría xAI | `n_estimators = 100`, `max_depth = 8`, `random_state = 42` |
+| **Red neuronal MLP** | **Modelo final** | capas `(64, 32)`, ReLU, Adam, `early_stopping = True`, `max_iter = 500` |
 
 Los tres modelos se entrenan sobre **ln(Sd)** (`TransformedTargetRegressor`) y devuelven Sd en cm.
 
@@ -43,10 +43,11 @@ Los tres modelos se entrenan sobre **ln(Sd)** (`TransformedTargetRegressor`) y d
 
 | Modelo | RMSE (cm) | MAE (cm) | R² (cm) | R² ln(Sd) |
 |:---|---:|---:|---:|---:|
-| **Random Forest** | **1.112 ± 0.236** | 0.294 ± 0.091 | **0.566 ± 0.068** | 0.907 ± 0.007 |
-| Red neuronal MLP | 1.113 ± 0.239 | 0.285 ± 0.100 | 0.565 ± 0.071 | 0.922 ± 0.004 |
+| Random Forest | **1.112 ± 0.236** | 0.294 ± 0.091 | **0.566 ± 0.068** | 0.907 ± 0.007 |
+| **Red neuronal MLP (final)** | 1.113 ± 0.239 | **0.285 ± 0.100** | 0.565 ± 0.071 | **0.922 ± 0.004** |
 | Ridge (GMM lineal) | 1.979 ± 1.025 | 0.420 ± 0.208 | −0.474 ± 1.113 | 0.912 ± 0.007 |
 
+- Random Forest y MLP empatan en RMSE (1.112 vs. 1.113 cm). Se elige la **MLP como modelo final** porque tiene menor σ_ln (0.792), menor sesgo que el RF en todos los tramos de distancia y el R² ln(Sd) más alto y estable (0.922 ± 0.004).
 - Random Forest y MLP reducen el RMSE de la GMM lineal en los **5 de 5 folds** (≈ 35 % de reducción media).
 - En **campo cercano** (Rrup < 20 km) el RMSE baja de 6.1 cm (GMM) a ≈ 3.0 cm (RF y MLP).
 - **Importancia de variables (PFI):** Mw > Rrup > Vs30 > Z1.0 > mecanismo. Mw ocupa el primer lugar en el 93 % de las corridas.
@@ -98,7 +99,7 @@ El script imprime la depuración de datos, las métricas por fold y el ranking d
 
 ## 6. Uso ético de IA (Accountability)
 
-El equipo usó asistentes de IA (Claude Code, ChatGPT y Gemini) como apoyo para programar y redactar. El
+El equipo usó asistentes de IA (Claude Code y Gemini) como apoyo para programar y redactar. El
 **Anexo A del informe final** documenta los prompts, las iteraciones, la validación del código generado y las
 afirmaciones de la IA que el equipo corrigió. El equipo revisó todos los datos, métricas y conclusiones
 contra el flatfile real y la ejecución del código.
