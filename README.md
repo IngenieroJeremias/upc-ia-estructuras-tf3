@@ -64,7 +64,7 @@ El detalle completo está en [`docs/TF3_Resumen_Resultados_Reales.md`](docs/TF3_
 │   ├── main_tf3_pipeline.py       Código final del TF3 (datos → modelos → métricas → figuras)
 │   └── eda_nga_west2.ipynb        Análisis exploratorio (T2)
 └── docs/
-    ├── Informe_Final_TF3_Grupo03.pdf               Informe final (incluye Bitácora de IA, Anexo A)
+    ├── Informe_Final_TF3_Grupo03.pdf / .docx       Informe final (incluye Bitácora de IA, Anexo A)
     ├── Presentacion_TF3_Grupo03.pdf                Diapositivas de la sustentación
     ├── BITACORA_IA_T2.md                           Bitácora de uso de IA
     ├── TF3_Resumen_Resultados_Reales.md            Resumen generado por el pipeline
